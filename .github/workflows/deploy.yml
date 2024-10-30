@@ -1,0 +1,42 @@
+name: Deploy to Vultr
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install SSH key
+      uses: webfactory/ssh-agent@v0.6.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    # Copy code to Vultr server by Louis
+    - name: Copy files to Vultr server
+      run: |
+        ssh -o StrictHostKeyChecking=no root@139.180.147.225 << 'EOF'
+          cd /www/wwwroot/profile.hoabinhtourist.com
+
+          export COMPOSER_ALLOW_SUPERUSER=1
+          
+          if [ ! -d ".git" ]; then
+            git init
+            git config --global --add safe.directory /www/wwwroot/profile.hoabinhtourist.com
+            git remote add origin git@github.com:hoabinhgroup/profiles-hbt.git
+            git pull origin main
+          else
+            git pull origin main
+          fi
+
+            curl -s -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage \
+            -d chat_id=${{ secrets.TELEGRAM_CHAT_ID }} \
+            -d text="📢 Dự án: ${{ github.repository }} - Code đã được deploy lên nhánh main bởi ${{ github.actor }}. Commit message: ${{ github.event.head_commit.message }}"
+        EOF
+        
