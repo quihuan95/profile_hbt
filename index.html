@@ -1,59 +1,43 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <link rel="stylesheet" href="css/flipbook.min.css">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <script
-            src="https://code.jquery.com/jquery-3.6.3.js"
-            integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
-            crossorigin="anonymous"
-        ></script>
+    <link rel="stylesheet" href="css/flipbook.min.css">
 
-        <script src="js/flipbook.min.js"></script>
-        <script type="text/javascript">
-            jQuery(document).ready(function () {
-                jQuery('#container').flipBook({
-                    pages: [
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-0.jpg" , thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-0.jpg'},
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-1.jpg",  thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-1.jpg'},
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-2.jpg" , thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-2.jpg'},
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-3.jpg",  thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-3.jpg'},
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-4.jpg" , thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-4.jpg'},
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-5.jpg",  thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-5.jpg'},
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-6.jpg" , thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-6.jpg'},
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-7.jpg",  thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-7.jpg'},
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-8.jpg" , thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-8.jpg'},
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-9.jpg",  thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-9.jpg'},
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-10.jpg" , thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-10.jpg'},
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-11.jpg",  thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-11.jpg'},
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-12.jpg" , thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-12.jpg'},
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-13.jpg",  thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-13.jpg'},
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-14.jpg" , thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-14.jpg'},
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-15.jpg",  thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-15.jpg'},
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-16.jpg",  thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-16.jpg'},
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-17.jpg",  thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-17.jpg'},
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-18.jpg" , thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-18.jpg'},
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-19.jpg",  thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-19.jpg'},
-                        {src: "https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-20.jpg",  thumb: 'https://cdn.hoabinhevents.com/profiles/hbt/hoabinhtourist-images-20.jpg'},
-                    ],
-                    backgroundColor: '#063970',
-                    backgroundImage: 'images/background.png',
-                });
+    <script src="https://code.jquery.com/jquery-3.6.3.js"
+        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+
+    <script src="js/flipbook.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            jQuery('#container').flipBook({
+                pages: Array.from({ length: 66 }, function (_, i) {
+                    var url = 'https://cdn.hoabinhevents.com/profiles/hbt/V6/PRF%20HBT_' + (i + 1) + '.jpg';
+                    return { src: url, thumb: url, json: i + 1 + '.json' };
+                }),
+                backgroundColor: '#063970',
+                backgroundImage: 'images/background.png',
+                viewMode: 'webgl',
+                singlePageModeIfMobile: true,
+                responsiveView: true,
             });
-        </script>
-        <style>
-            .flipbook-menuBottom{
-                background: #04245d !important;
-            }
-            .flipbook-color-light{
-                fill:white !important;
-            }
-        </style>
-    </head>
+        });
+    </script>
+    <style>
+        .flipbook-menuBottom {
+            background: #04245d !important;
+        }
 
-    <body>
+        .flipbook-color-light {
+            fill: white !important;
+        }
+    </style>
+</head>
+
+<body>
     <div id="container"></div>
-    </body>
+</body>
+
 </html>
