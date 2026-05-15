@@ -3,6 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://cdn.hoabinhevents.com" crossorigin>
 
     <link rel="stylesheet" href="css/flipbook.min.css">
 
@@ -12,16 +13,62 @@
     <script src="js/flipbook.min.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function () {
+            var isMobile = window.matchMedia('(max-width: 768px)').matches;
+            var lowEnd = isMobile || (navigator.deviceMemory && navigator.deviceMemory < 4);
+            var perf = lowEnd ? {
+                pageTextureSize: 1024,
+                pageTextureSizeMobile: 768,
+                pageTextureSizeSmall: 768,
+                pageTextureSizeMobileSmall: 640,
+                pageSegmentsW: 3,
+                loadPagesB: 0,
+            } : {
+                pageTextureSize: 1400,
+                pageTextureSizeMobile: 1024,
+                pageTextureSizeSmall: 1024,
+                pageTextureSizeMobileSmall: 768,
+                pageSegmentsW: 5,
+                loadPagesB: 1,
+            };
+
             jQuery('#container').flipBook({
                 pages: Array.from({ length: 66 }, function (_, i) {
                     var url = 'https://cdn.hoabinhevents.com/profiles/hbt/V6/PRF%20HBT_' + (i + 1) + '.jpg';
-                    return { src: url, thumb: url, json: i + 1 + '.json' };
+                    return { src: url, thumb: url };
                 }),
                 backgroundColor: '#063970',
                 backgroundImage: 'images/background.png',
                 viewMode: 'webgl',
                 singlePageModeIfMobile: true,
                 responsiveView: true,
+                loadAllPages: false,
+                loadPagesF: 1,
+                loadPagesB: perf.loadPagesB,
+                pageTextureSize: perf.pageTextureSize,
+                pageTextureSizeMobile: perf.pageTextureSizeMobile,
+                pageTextureSizeSmall: perf.pageTextureSizeSmall,
+                pageTextureSizeMobileSmall: perf.pageTextureSizeMobileSmall,
+                thumbTextureSize: 150,
+                minPixelRatio: 1,
+                antialias: false,
+                shadows: false,
+                lights: false,
+                rotateCameraOnMouseDrag: false,
+                rotateCameraOnMouseMove: false,
+                pageSegmentsW: perf.pageSegmentsW,
+                pageSegmentsH: 1,
+                pageHardness: 1,
+                pageFlipDuration: 0.8,
+                sound: true,
+                flipSound: true,
+                mobile: {
+                    viewMode: 'webgl',
+                    shadows: false,
+                    lights: false,
+                    pageSegmentsW: 3,
+                    pageTextureSizeMobile: 768,
+                    pageTextureSizeMobileSmall: 640,
+                },
             });
         });
     </script>
